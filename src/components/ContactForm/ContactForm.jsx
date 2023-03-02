@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 
 const ContactForm = ({ onSubmit }) => {
-  const [state, setState] = useState({
-    name: '',
-    number: '',
-  });
+  // const [state, setState] = useState({
+  //   name: '',
+  //   number: '',
+  // });
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -19,28 +19,8 @@ const ContactForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ name, number });
-    // reset();
+    reset();
   };
-
-  /*
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit({ name, number });
-    setState({
-      name: '',
-      number: '',
-    });
-  };
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setState(prevState => {
-      return { ...prevState, [name]: value };
-    });
-  };
-
-  const { name, number } = state;
-  */
 
   return (
     <div className={s.wrap}>
