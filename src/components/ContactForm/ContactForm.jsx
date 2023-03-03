@@ -43,7 +43,6 @@ const ContactForm = () => {
       id: nanoid(),
     };
 
-    // const normalizedName = name.toLowerCase();
     const isDuplicateContact = allContacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
