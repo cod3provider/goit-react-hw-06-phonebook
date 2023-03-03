@@ -14,35 +14,35 @@ import { setFilter } from '../redux/filter/filter-slice';
 
 const App = () => {
   const filteredContacts = useSelector(getFilteredContacts);
-  const filter = useSelector(getFilter);
-  const allContacts = useSelector(getAllContacts);
+  // const filter = useSelector(getFilter);
+  // const allContacts = useSelector(getAllContacts);
 
   const dispatch = useDispatch();
 
-  const isDuplicateContact = name => {
-    const normalizedName = name.toLowerCase();
-    const result = allContacts.find(({ name }) => {
-      return name.toLowerCase() === normalizedName;
-    });
-    return Boolean(result);
-  };
-
-  const handleAddContact = ({ name, number }) => {
-    if (isDuplicateContact(name)) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
-
-    dispatch(addContact({ name, number }));
-  };
+  // const isDuplicateContact = name => {
+  //   const normalizedName = name.toLowerCase();
+  //   const result = allContacts.find(({ name }) => {
+  //     return name.toLowerCase() === normalizedName;
+  //   });
+  //   return Boolean(result);
+  // };
+  //
+  // const handleAddContact = ({ name, number }) => {
+  //   if (isDuplicateContact(name)) {
+  //     alert(`${name} is already in contacts`);
+  //     return;
+  //   }
+  //
+  //   dispatch(addContact({ name, number }));
+  // };
 
   const handleDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
-  const handleFilter = e => {
-    dispatch(setFilter(e.target.value));
-  };
+  // const handleFilter = e => {
+  //   dispatch(setFilter(e.target.value));
+  // };
 
   return (
     <div
@@ -56,15 +56,19 @@ const App = () => {
         color: '#010101',
       }}
     >
-      <h1>Phonebook</h1>
-      <ContactForm onSubmit={handleAddContact} />
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm />
+      </div>
 
-      <h2>Contacts</h2>
-      <ContactFilter value={filter} handleChange={handleFilter} />
-      <ContactList
-        contacts={filteredContacts}
-        onDeleteContact={handleDeleteContact}
-      />
+      <div>
+        <h2>Contacts</h2>
+        <ContactFilter />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={handleDeleteContact}
+        />
+      </div>
     </div>
   );
 };
